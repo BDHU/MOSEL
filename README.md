@@ -1,0 +1,2 @@
+# MOSEL
+Multimodal inference
