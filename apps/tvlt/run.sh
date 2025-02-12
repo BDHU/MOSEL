@@ -1,0 +1,6 @@
+#!/bin/bash
+
+python test_edf_queue.py --policy aggressive --min_acc 0.6 --max_acc 0.743  --trace_file ./trace_results/aggressive_results.txt --twitter_trace_file ../dropinf_data_proc/twitter_04_25_norm.txt --profiled_results mosei_batch_profiling_result/mosei_batch.json --pkl mosei_b_to_a/b_to_a.pkl
+python test_edf_queue.py --policy no_policy --min_acc 0.6 --max_acc 0.743  --trace_file ./trace_results/no_policy_results.txt --twitter_trace_file ../dropinf_data_proc/twitter_04_25_norm.txt --profiled_results mosei_batch_profiling_result/mosei_batch.json --pkl mosei_b_to_a/b_to_a.pkl
+python test_edf_queue.py --policy random --min_acc 0.6 --max_acc 0.743  --trace_file ./trace_results/random_results.txt --twitter_trace_file ../dropinf_data_proc/twitter_04_25_norm.txt --profiled_results mosei_batch_profiling_result/mosei_batch.json --pkl mosei_b_to_a/b_to_a.pkl
+python test_edf_queue.py --policy maximize --min_acc 0.6 --max_acc 0.743  --trace_file ./trace_results/maximize_results.txt --twitter_trace_file ../dropinf_data_proc/twitter_04_25_norm.txt --profiled_results mosei_batch_profiling_result/mosei_batch.json --pkl mosei_b_to_a/b_to_a.pkl

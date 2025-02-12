@@ -1,0 +1,4 @@
+*.swp
+*.swo
+__pycache__/
+profiler_result/

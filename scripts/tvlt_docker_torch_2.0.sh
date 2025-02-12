@@ -1,0 +1,32 @@
+#!/bin/bash
+
+WORKSPACE=$(pwd)/../apps/tvlt
+CONTAINER_NAME=ghcr.io/pytorch/pytorch-nightly
+CONTAINER_VERSION=latest
+NAME=dropinf_tvlt
+
+# Two seperate volumes to avoid git error:
+## stderr: 'error: unknown option `cached'
+docker run --shm-size 8G -d -v $WORKSPACE:/workspace -v $(pwd)/../:/dropinf --gpus all --rm --pid=host --net=host --name=${NAME} --interactive --tty ${CONTAINER_NAME}:${CONTAINER_VERSION}
+docker exec ${NAME} bash -c "pip install torchaudio"
+docker exec ${NAME} bash -c "pip install pytorch_lightning=2.0.0"
+docker exec ${NAME} bash -c "pip install sacred"
+docker exec ${NAME} bash -c "pip install transformers"
+docker exec ${NAME} bash -c "pip install einops"
+docker exec ${NAME} bash -c "pip install timm"
+docker exec ${NAME} bash -c "pip install decord"
+docker exec ${NAME} bash -c "pip install librosa"
+docker exec ${NAME} bash -c "pip install moviepy"
+docker exec ${NAME} bash -c "pip install ffmpeg-python"
+docker exec ${NAME} bash -c "pip install stable_baselines3"
+docker exec ${NAME} bash -c "pip install huggingface_sb3"
+docker exec ${NAME} bash -c "pip install setuptools"
+docker exec ${NAME} bash -c "pip install tensorboard"
+docker exec ${NAME} bash -c "pip install gekko"
+docker exec ${NAME} bash -c "apt update"
+docker exec ${NAME} bash -c "DEBIAN_FRONTEND=noninteractive apt install ffmpeg -y"
+docker exec ${NAME} bash -c "apt install build-essential -y"
+docker exec ${NAME} bash -c "pip install audiosegment"
+docker exec ${NAME} bash -c "export PYTHONPATH=${PYTHONPATH}:/dropinf:/dropinf/dropinf"
+
+docker exec -it ${NAME} bash

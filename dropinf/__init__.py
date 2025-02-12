@@ -1,0 +1,3 @@
+r"""
+The dropinf package
+"""
